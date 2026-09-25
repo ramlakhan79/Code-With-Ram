@@ -107,18 +107,18 @@ function App() {
           index: true,
           element: <Home />,
         },
-        {
-          path: "about",
-          element: <About />,
-        },
-        {
-          path: "resume",
-          element: <Resume />,
-        },
-        {
-          path: "services",
-          element: <Services />,
-        },
+        // {
+        //   path: "about",
+        //   element: <About />,
+        // },
+        // {
+        //   path: "resume",
+        //   element: <Resume />,
+        // },
+        // {
+        //   path: "services",
+        //   element: <Services />,
+        // },
         {
           path: "blogs",
           element: <Blogs />,
@@ -127,10 +127,10 @@ function App() {
           path: "blogs/:id",
           element: <BlogDetails />,
         },
-        {
-          path: "coding",
-          element: <Coding />,
-        },
+        // {
+        //   path: "coding",
+        //   element: <Coding />,
+        // },
         
         // Authentication
         {

@@ -6,14 +6,14 @@ export const navMenu = [
     id: "Home",
     href: "/",
   },
-  {
-    id: "About",
-    href: "/about",
-  },
-  {
-    id: "Resume",
-    href: "/resume",
-  },
+  // {
+  //   id: "About",
+  //   href: "/about",
+  // },
+  // {
+  //   id: "Resume",
+  //   href: "/resume",
+  // },
   // {
   //   id: "Services",
   //   href: "/services",
@@ -23,9 +23,13 @@ export const navMenu = [
     href: "/blogs",
   },
   {
-    id: "Coding",
-    href: "/coding",
+    id: "Profile",
+    href: "/profile",
   },
+  // {
+  //   id: "Coding",
+  //   href: "/coding",
+  // },
 ];
 
 export const projects = [

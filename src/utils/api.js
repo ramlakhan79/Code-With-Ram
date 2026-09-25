@@ -24,12 +24,15 @@ export const getArticles = async () => {
 };
 
 export const getArticle = async (id) => {
-  const response = await fetch(`${API_URL}/api/articles/${id}`);
+ const token = localStorage.getItem("token");
 
-  if (!response.ok) {
-    throw new Error("Failed to fetch article");
-  }
-//   console.log("Fetched article:", response);
+ const response = await fetch(`${API_URL}/api/articles/${id}`, {
+   headers: token
+     ? {
+         Authorization: `Bearer ${token}`,
+       }
+     : {},
+ });
 
   return response.json();
 };
@@ -49,6 +52,58 @@ export const getPreviousArticle = async (id) => {
 
   if (!response.ok) {
     throw new Error("Failed to fetch previous article");
+  }
+
+  return response.json();
+};
+
+export const likeArticle = async (articleId) => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(`${API_URL}/api/articles/${articleId}/like`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  if (!response.ok) {
+    throw new Error("Unable to like article");
+  }
+
+  return response.json();
+};
+
+export const getArticleComments = async (articleId) => {
+  const response = await fetch(`${API_URL}/api/articles/${articleId}/comments`);
+
+  if (!response.ok) {
+    throw new Error("Unable to fetch comments");
+  }
+
+  return response.json();
+};
+
+export const addArticleComment = async (articleId, comment) => {
+  const token = localStorage.getItem("token");
+
+  const response = await fetch(
+    `${API_URL}/api/articles/${articleId}/comments`,
+    {
+      method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+
+        Authorization: `Bearer ${token}`,
+      },
+
+      body: JSON.stringify(comment),
+    },
+  );
+
+  if (!response.ok) {
+    throw new Error("Unable to add comment");
   }
 
   return response.json();

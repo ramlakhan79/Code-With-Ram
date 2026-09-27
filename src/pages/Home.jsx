@@ -39,12 +39,7 @@ export default function Home() {
                 <Socials />
                 <p className="text-center">Are you ready to connect me? Let&apos;s chat!</p>
                 <ContactForm />
-            </section>
-            {/* connect for login page
-            <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
-                <p className="text-center">Please login to manage your articles.</p>
-                <a href="/login" className="glassy-icon px-6 py-3 border rounded-lg"> Login</a>
-            </section> */}
+            </section>           
             
         </>
     );

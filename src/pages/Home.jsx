@@ -4,7 +4,7 @@ import Socials from "../components/Socials";
 import Projects from "../components/Projects";
 import LeetCodeHeatMap from "../components/LeetCodeHeatMap";
 import Dailyquotes from "../components/Dailyquotes";
-// import Testimonials from "../components/Testimonials";
+import Testimonials from "../components/Testimonials";
 import SplashSection from "../components/SplashSection";
 import ContactForm from "../components/ContactForm";
 
@@ -30,10 +30,10 @@ export default function Home() {
                 <h2>Daily Quote</h2>
                 <Dailyquotes />
             </section> */}
-            {/* <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
+            <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
                 <h2>Testimonials</h2>
                 <Testimonials />
-            </section> */}
+            </section>
             <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
                 <h2>Contact</h2>
                 <Socials />

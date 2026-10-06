@@ -45,7 +45,7 @@ export default function HeaderLogo({ isDarkMode }) {
 
     return (
         <div>
-            <img className="w-[58px]" src="/assets/images/codewithram_logo_2.png" alt="Profile of Ramlakhan" />
+            <img className="w-[85px]" src="/assets/images/codewithram2.png" alt="Profile of Ramlakhan" />
         </div>
         // <svg
         //     className="h-10 md:h-13 lg:h-[136px]"

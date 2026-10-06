@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import {
   getArticles,
   getUsers,
@@ -193,6 +193,14 @@ const AdminDashboard = () => {
               <span className="text-sm text-gray-500">
                 Total Users: {users.length} users
               </span>
+
+              <Link to="/admin/projects">
+                Projects
+              </Link>
+
+              <Link to="/admin/testimonials">
+                Testimonials
+              </Link>
             </div>
           </div>
         </div>

@@ -38,6 +38,10 @@ import VerifyEmail from "./pages/VerifyEmail";
 
 import GitHubCallback from "./components/GitHubCallback";
 
+import ProjectsAdmin from "./pages/ProjectsAdmin";
+import TestimonialsAdmin from "./pages/TestimonialsAdmin";
+import ProjectForm from "./components/ProjectForm";
+import TestimonialForm from "./components/TestimonialForm";
 
 function ProtectedRoute({ children, allowedRoles }) {
   const token = localStorage.getItem("token");
@@ -154,6 +158,39 @@ function App() {
           path: "github/callback",
           element: <GitHubCallback/>,
         },   
+
+        {
+          path: "/admin/projects",
+          element: <ProjectsAdmin />,
+        },    
+
+        {
+          path: "/admin/testimonials",
+          element: <TestimonialsAdmin />,     
+        },           
+        {
+          path: "/admin/projects/create",
+          element: <ProjectForm />,
+        },
+        {
+          path: "/admin/projects/create",
+          element: <ProjectForm />,
+        },
+        {
+          path: "/admin/projects/edit/:id",
+          element: <ProjectForm />,
+        },
+
+        {
+          path: "/admin/testimonials/create",
+          element: <TestimonialForm />,
+        },
+
+        {
+          path: "/admin/testimonials/edit/:id",
+          element: <TestimonialForm />,
+        },
+
         // =========================
         // ADMIN ROUTES
         // =========================
@@ -254,6 +291,8 @@ function App() {
           ),
         },
         
+        
+
         {
           path: "thank-you",
           element: <ThankYou isDarkMode={isDarkMode} />,

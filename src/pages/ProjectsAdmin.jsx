@@ -53,7 +53,9 @@ const ProjectsAdmin = () => {
     };
 
     if (loading) {
-        return <div>Loading projects...</div>;
+        return <div className="loader-container">
+            <div className="custom-loader"></div>
+        </div>
     }
 
     return (
@@ -81,7 +83,7 @@ const ProjectsAdmin = () => {
                 {projects.map((project) => (
                     <article
                         key={project._id}
-                        className="overflow-hidden rounded-xl border border-gray-200 bg-white dark:border-gray-700 dark:bg-gray-900"
+                        className="overflow-hidden rounded-xl border border-gray-200 bg-black dark:border-gray-700 dark:bg-gray-900"
                     >
                         {project.image && (
                             <img

@@ -101,27 +101,27 @@ export default function ProjectModal({ projectId, projectData, }) {
                     </button>
                     <h4 className="text-center font-extrabold ml-auto mr-auto">{projectData.title}</h4>
                     <img className="border-2 border-primBlue-200 w-[100%] object-cover object-top max-h-[350px] ml-auto mr-auto" src={projectData.src} alt={projectData.altText} />
-                    {projectData.details.description !== null && (
+                    {projectData?.description !== null && (
                         <>
                             <h5 className="text-center ml-auto mr-auto">About</h5>
-                            <p className="ml-auto mr-auto text-justify">{projectData.details.description}</p>
+                            <p className="ml-auto mr-auto text-justify">{projectData?.description}</p>
                         </>
                     )}
                     <h5 className="text-center ml-auto mr-auto">Technologies</h5>
                     <ul className="w-[100%] grid grid-cols-[repeat(auto-fit,minmax(80px,1fr))] md:grid-cols-[repeat(auto-fit,minmax(90px,1fr))] lg:grid-cols-[repeat(auto-fit,minmax(110px,1fr))] justify-items-center items-start justify-center gap-6">
-                        {projectData.details.technologies.map((technology, id) => (
+                        {/* {projectData?.technologies?.map((technology, id) => (
                             <li key={id} className="h-[100%] flex flex-col flex-nowrap items-center gap-5 justify-center">
                                 <technology.Icon />
-                                <span className="text-center hyphens-auto">{technology.title}</span>
+                                <span className="text-center hyphens-auto">{technology}</span>
                             </li>
-                        ))}
+                        ))} */}
                     </ul>
                     <div className="flex flex-row flex-wrap gap-7 items-center justify-center">
-                        {projectData.details.url !== null && (
-                            <a href={projectData.details.url} target="_blank" className="glassy-icon px-6 shrink-0">Live Preview</a>
+                        {projectData.details?.url !== null && (
+                            <a href={projectData.details?.url} target="_blank" className="glassy-icon px-6 shrink-0">Live Preview</a>
                         )}
-                        {projectData.details.githubUrl !== null && (
-                            <a href={projectData.details.githubUrl} target="_blank" className="glassy-icon px-6 shrink-0">Visit GitHub Project</a>
+                        {projectData.details?.githubUrl !== null && (
+                            <a href={projectData.details?.githubUrl} target="_blank" className="glassy-icon px-6 shrink-0">Visit GitHub Project</a>
                         )}
                     </div>
                 </div>

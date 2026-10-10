@@ -186,7 +186,9 @@ const ProjectForm = () => {
     };
 
     if (loading) {
-        return <div>Loading project...</div>;
+        return <div className="loader-container">
+            <div className="custom-loader"></div>
+        </div>
     }
 
     return (
@@ -194,6 +196,11 @@ const ProjectForm = () => {
             onSubmit={handleSubmit}
             className="flex flex-col gap-8"
         >
+            <div>
+                <button type="button" onClick={() => navigate("/admin/projects")}>
+                    &larr; Back to Projects
+                </button>
+            </div>
             <div>
                 <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
                     {id ? "Edit Project" : "Create Project"}

@@ -113,7 +113,11 @@ const TestimonialForm = () => {
         <form
             onSubmit={handleSubmit}
             className="flex max-w-4xl flex-col gap-6"
-        >
+        >    <div>
+                <button type="button" onClick={() => navigate("/admin/projects")}>
+                    &larr; Back to Testimonials
+                </button>
+            </div>
             <h1 className="text-2xl font-bold">
                 {id
                     ? "Edit Testimonial"

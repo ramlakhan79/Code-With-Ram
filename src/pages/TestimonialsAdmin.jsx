@@ -4,9 +4,10 @@ import {
     deleteTestimonial,
     toggleTestimonialPublish,
 } from "../utils/testimonials";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const TestimonialsAdmin = () => {
+    const navigate = useNavigate();
     const [testimonials, setTestimonials] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -62,7 +63,10 @@ const TestimonialsAdmin = () => {
         <section className="flex flex-col gap-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold">
+                    <button onClick={() => navigate("/admin")} className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                        &larr; Back to Dashboard
+                    </button>
+                    <h1 className="text-4 font-bold">
                         Testimonials
                     </h1>
 

@@ -4,9 +4,10 @@ import {
     deleteProject,
     toggleProjectPublish,
 } from "../utils/projects";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const ProjectsAdmin = () => {
+     const navigate = useNavigate();
     const [projects, setProjects] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -62,10 +63,14 @@ const ProjectsAdmin = () => {
         <section className="flex flex-col gap-6">
             <div className="flex items-center justify-between">
                 <div>
-                    <h1 className="text-2xl font-bold text-gray-900 dark:text-white">
+                    <div>
+                        <button onClick={() => navigate("/admin")} className="text-sm text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200">
+                            &larr; Back to Dashboard
+                        </button>
+                    </div>
+                    <h1 className="text-4 font-bold text-gray-900 dark:text-white">
                         Projects
                     </h1>
-
                     <p className="mt-1 text-sm text-gray-500">
                         Manage portfolio projects.
                     </p>

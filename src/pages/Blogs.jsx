@@ -91,7 +91,7 @@ export default function Blogs() {
 
                     </div>
                    
-                    <div className="relative w-full max-w-xl">
+                    {/* <div className="relative w-full max-w-xl">
                         <select
                             value={activeCat}
                             defaultValue={'SAP ABAP'}
@@ -108,7 +108,7 @@ export default function Blogs() {
                                 </option>
                             ))}
                         </select>
-                    </div>
+                    </div> */}
 
                 </div>
 

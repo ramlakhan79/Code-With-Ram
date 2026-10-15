@@ -1575,53 +1575,41 @@ canvas {
         margin: 0 auto;
     }
 }
-
 .article-content pre {
     position: relative;
-    margin: 2rem 0;
-    padding: 0;
     overflow-x: auto;
-    border-radius: 16px;
-    background: #09090b;
-    border: 1px solid #27272a;
+    margin: 1.5rem 0;
+    padding: 1.25rem;
+    border: 1px solid #30363d;
+    border-radius: 12px;
+    background: #0d1117;
+    font-size: 0.875rem;
+    line-height: 1.7;
+    tab-size: 4;
 }
 
 .article-content pre code {
     display: block;
-    padding: 1.25rem 1.4rem;
-    font-family:
-        "JetBrains Mono",
-        "Fira Code",
-        Consolas,
-        monospace;
-    font-size: 0.9rem;
-    line-height: 1.7;
-    color: #e5e7eb;
+    padding: 0;
     background: transparent;
+    color: #e6edf3;
+    font-family: "Fira Code", "Consolas", monospace;
     white-space: pre;
 }
 
-.article-content code:not(pre code) {
-    padding: 0.2rem 0.45rem;
-    border-radius: 6px;
-    background: rgba(59, 130, 246, 0.1);
-    color: #60a5fa;
-    font-size: 0.88em;
+.article-content :not(pre)>code {
+    padding: 0.2rem 0.4rem;
+    border-radius: 5px;
+    background: #1f2937;
+    color: #93c5fd;
+    font-size: 0.875em;
 }
 
 .article-content pre::-webkit-scrollbar {
-    height: 8px;
-}
-
-.article-content pre::-webkit-scrollbar-track {
-    background: #18181b;
+    height: 6px;
 }
 
 .article-content pre::-webkit-scrollbar-thumb {
-    background: #3f3f46;
-    border-radius: 999px;
-}
-
-.article-content pre::-webkit-scrollbar-thumb:hover {
-    background: #52525b;
+    background: #4b5563;
+    border-radius: 10px;
 }

@@ -45,7 +45,16 @@ export default function HeaderLogo({ isDarkMode }) {
 
     return (
         <div>
-            <img className="w-[85px]" src="/assets/images/codewithram2.png" alt="Profile of Ramlakhan" />
+            <a href="/" class="logo" aria-label="Code With Ram">
+                <svg width="40" height="40" viewBox="0 0 120 120" role="img" aria-label="Code With Ram logo">
+                    <rect width="120" height="120" rx="28" fill="#0F172A" />
+                    <polyline points="40,36 18,60 40,84" fill="none" stroke="#2DD4A7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <polyline points="80,36 102,60 80,84" fill="none" stroke="#2DD4A7" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M51 82 V38 H62 A11 11 0 0 1 62 60 H51 M60 60 L73 82" fill="none" stroke="#F8FAFC" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                {/* <span>Code With <b>Ram</b></span> */}
+            </a>
+            {/* <img className="w-[85px]" src="/assets/images/codewithram2.png" alt="Profile of Ramlakhan" /> */}
         </div>
         // <svg
         //     className="h-10 md:h-13 lg:h-[136px]"

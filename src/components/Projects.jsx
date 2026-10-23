@@ -32,7 +32,7 @@ export default function Projects() {
             </div>
         );
     }
-console.log(projects);
+// console.log(projects);
     if (error) {
         return (
             <div className="py-8 text-center text-red-500">

@@ -608,7 +608,7 @@ const Profile = () => {
                   </div>
 
                   <Link
-                    to="/reset-password"
+                    to="/profile/change-password"
                     className="
                       inline-flex
                       justify-center

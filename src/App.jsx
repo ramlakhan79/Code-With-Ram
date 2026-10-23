@@ -42,6 +42,7 @@ import ProjectsAdmin from "./pages/ProjectsAdmin";
 import TestimonialsAdmin from "./pages/TestimonialsAdmin";
 import ProjectForm from "./components/ProjectForm";
 import TestimonialForm from "./components/TestimonialForm";
+import ChangePassword from "./pages/ChangePassword";
 
 function ProtectedRoute({ children, allowedRoles }) {
   const token = localStorage.getItem("token");
@@ -154,6 +155,11 @@ function App() {
           path: "reset-password/:token",
           element: <ResetPassword />,
         },
+        {
+          path: "/profile/change-password",
+          element: <ChangePassword/>,
+        },
+
         {
           path: "verify-email/:token",
           element: <VerifyEmail />,

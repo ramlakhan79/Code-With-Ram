@@ -49,6 +49,7 @@ const createSlugId = text => {
 const BlogDetails = () => {
 
     const { id } = useParams();
+    const { slug } = useParams();
     const navigate = useNavigate();
 
     const [blog, setBlog] = useState(null);
@@ -117,8 +118,7 @@ const BlogDetails = () => {
                 setLoading(true);
 
                 const data =
-                    await getArticle(id);
-                
+                    await getArticle(slug);
                 const article =
                     data.article || data;
 
@@ -146,7 +146,7 @@ const BlogDetails = () => {
 
         fetchArticle();
 
-    }, [id]);
+    }, [slug]);
 
 
     /*
@@ -156,13 +156,13 @@ const BlogDetails = () => {
     */
 
     useEffect(() => {
-
+        if (!blog?._id) return;
         const fetchComments = async () => {
 
             try {
 
                 const data =
-                    await getArticleComments(id);
+                    await getArticleComments(blog?._id);
 
                 setComments(
                     data.comments ||
@@ -183,7 +183,7 @@ const BlogDetails = () => {
 
         fetchComments();
 
-    }, [id]);
+    }, [blog?._id]);
 
 
     /*
@@ -197,7 +197,7 @@ const BlogDetails = () => {
         if (!user) {
 
             navigate(
-                `/login?redirect=/blogs/${id}`
+                `/login?redirect=/blogs/${slug}`
             );
 
             return;
@@ -211,7 +211,7 @@ const BlogDetails = () => {
             setLikeLoading(true);
 
             const data =
-                await likeArticle(id);
+                await likeArticle(blog?._id);
 
             setLiked(
                 data.liked ??
@@ -253,7 +253,7 @@ const BlogDetails = () => {
         if (!user) {
 
             navigate(
-                `/login?redirect=/blogs/${id}`
+                `/login?redirect=/blogs/${slug}`
             );
 
             return;
@@ -268,7 +268,7 @@ const BlogDetails = () => {
 
             const data =
                 await addArticleComment(
-                    id,
+                    blog?._id,
                     {
                         content:
                             commentText.trim()
@@ -439,15 +439,15 @@ const BlogDetails = () => {
         try {
 
             const data =
-                await getNextArticle(id);
+                await getNextArticle(blog?._id,);
 
             const nextArticle =
                 data.article || data;
 
-            if (nextArticle?._id) {
+            if (nextArticle?.slug) {
 
                 navigate(
-                    `/blogs/${nextArticle._id}`
+                    `/blogs/${nextArticle.slug}`
                 );
 
             }
@@ -469,15 +469,15 @@ const BlogDetails = () => {
         try {
 
             const data =
-                await getPreviousArticle(id);
+                await getPreviousArticle(blog?._id);
 
             const previousArticle =
                 data.article || data;
 
-            if (previousArticle?._id) {
+            if (previousArticle?.slug) {
 
                 navigate(
-                    `/blogs/${previousArticle._id}`
+                    `/blogs/${previousArticle.slug}`
                 );
 
             }

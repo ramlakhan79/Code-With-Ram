@@ -127,15 +127,19 @@ function App() {
           path: "blogs",
           element: <Blogs />,
         },
+        // {
+        //   path: "blogs/:id",
+        //   element: <BlogDetails />,
+        // },
         {
-          path: "blogs/:id",
+          path: "blogs/:slug",
           element: <BlogDetails />,
         },
         // {
         //   path: "coding",
         //   element: <Coding />,
         // },
-        
+
         // Authentication
         {
           path: "register",
@@ -147,27 +151,27 @@ function App() {
         },
 
         {
-          path: "reset-password/:token",       
-          element: <ResetPassword/>,
+          path: "reset-password/:token",
+          element: <ResetPassword />,
         },
         {
           path: "verify-email/:token",
           element: <VerifyEmail />,
-        },      
+        },
         {
           path: "github/callback",
-          element: <GitHubCallback/>,
-        },   
+          element: <GitHubCallback />,
+        },
 
         {
           path: "/admin/projects",
           element: <ProjectsAdmin />,
-        },    
+        },
 
         {
           path: "/admin/testimonials",
-          element: <TestimonialsAdmin />,     
-        },           
+          element: <TestimonialsAdmin />,
+        },
         {
           path: "/admin/projects/create",
           element: <ProjectForm />,
@@ -279,7 +283,7 @@ function App() {
             </ProtectedRoute>
           ),
         },
-      
+
         {
           path: "/profile",
           element: (
@@ -290,8 +294,8 @@ function App() {
             </ProtectedRoute>
           ),
         },
-        
-        
+
+
 
         {
           path: "thank-you",

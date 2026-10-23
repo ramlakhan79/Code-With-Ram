@@ -173,7 +173,7 @@ export default function Blogs() {
 
                                             {isLongDesc && (
                                                 <Link
-                                                    to={`/blogs/${blog._id}`}
+                                                    to={`/blogs/${blog.slug}`}
                                                     state={{ blog }}
                                                     className="text-blue-600 text-xs font-medium mt-2 inline-block"
                                                 >

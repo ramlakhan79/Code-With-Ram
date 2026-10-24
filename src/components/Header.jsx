@@ -11,7 +11,7 @@ Header.propTypes = {
 
 export default function Header({ isDarkMode, toggleDarkMode }) {
     return (
-        <header className="flex flex-row flex-wrap justify-between items-center gap-6 px-mobileBound pt-1 pb-1">
+        <header className="flex flex-row flex-wrap justify-between items-center gap-6 px-mobileBound pt-1 pb-1 text-gray-900 dark:bg-[#1d1f25] dark:text-gray-100">
             <Link to="/">
                 <HeaderLogo isDarkMode={isDarkMode} />
             </Link>

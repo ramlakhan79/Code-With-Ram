@@ -35,7 +35,7 @@ export default function Testimonials() {
 
     if (!testimonials.length) {
         return (
-            <div className="py-8 text-center">
+            <div className="py-2 text-center">
                 No testimonials available.
             </div>
         );
@@ -46,7 +46,7 @@ export default function Testimonials() {
             testimonials.map((testimonial) => (
                 <figure
                     key={testimonial._id}
-                    className="glassy-screen px-mobileBound py-8 flex flex-col flex-nowrap gap-6 sm:px-7 sm:py-8 sm:gap-7 md:px-8 md:py-9 md:gap-8 lg:px-9 lg:py-10 lg:gap-9"
+                    className="glassy-screen px-mobileBound py-2 flex flex-col flex-nowrap gap-6 sm:px-7 sm:py-8 sm:gap-7 md:px-8 md:py-9 md:gap-8 lg:px-9 lg:py-10 lg:gap-9"
                 >
                     <QuoteIcon />
 

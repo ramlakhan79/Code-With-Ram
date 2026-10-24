@@ -78,10 +78,10 @@ export default function Home() {
                 <h1 className="text-center max-w-[18em]">Problem Solving and Web Experiences</h1>
                 <p className="text-justify">Hello, and welcome! I&apos;m Ramlakhan Lodhi, a MERN-Stack Aspiring developer. I am a passionate competitive programmer and highly interested in algorithmic problem solving. I am very interested in new technologies and am always eager to learn new technologies that enhance my knowledge. Together, let&apos;s Explore the vast opportunities in the digital world and design online solutions that engage, inspire, and propel success.</p>
             </section> */}
-            <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
+            {/* <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
                 <h2>Our Projects</h2>
                 <Projects />
-            </section>
+            </section> */}
             {/* <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
                 <h2>My Leetcode Graph</h2>
                 <LeetCodeHeatMap />                
@@ -91,13 +91,13 @@ export default function Home() {
                 <Dailyquotes />
             </section> */}
             <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
-                <h2>Testimonials</h2>
+                <h3>Testimonials</h3>
                 <Testimonials />
             </section>
             {/* <p className="text-center">Here are a few of my moments creations picturs:</p>
             <CubeCarousel name="desserts" carouselImages={dessertImages} /> */}
             <section className="w-[100%] flex flex-col flex-nowrap items-center justify-center gap-7 px-mobileBound sm:px-8 sm:gap-8 md:gap-9 lg:gap-10">
-                <h2>Contact</h2>
+                <h3>Contact</h3>
                 <Socials />
                 <p className="text-center">Are you ready to connect me? Let&apos;s chat!</p>
                 <ContactForm />

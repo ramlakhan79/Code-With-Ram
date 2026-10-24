@@ -9,6 +9,11 @@ import GoogleLoginButton from "../components/GoogleLoginButton";
 const Login = () => {
   const navigate = useNavigate();
   // const [token, setToken] = useState("");
+  const [showForgotPopup, setShowForgotPopup] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [forgotLoading, setForgotLoading] = useState(false);
+  const [forgotMessage, setForgotMessage] = useState("");
+  const [forgotError, setForgotError] = useState("");
   const [identifier, setIdentifier] = useState("");
 
   const [password, setPassword] = useState("");
@@ -56,6 +61,52 @@ const Login = () => {
   const handleGithubLogin = () => {
     window.location.href = `${import.meta.env.VITE_API_URL}/api/auth/github`;
   };
+
+  const handleForgotPassword = async (e) => {
+  e.preventDefault();
+
+  setForgotMessage("");
+  setForgotError("");
+
+  const email = forgotEmail.trim().toLowerCase();
+
+  if (!email) {
+    setForgotError("Please enter your email address.");
+    return;
+  }
+
+  try {
+    setForgotLoading(true);
+
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/auth/forgot-password`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(
+        data.message || "Unable to send the password reset link."
+      );
+    }
+
+    setForgotMessage(
+      data.message || "If the account exists, a password reset link has been sent to your email."
+    );
+    setForgotEmail("");
+  } catch (error) {
+    setForgotError(error.message || "Something went wrong. Please try again.");
+  } finally {
+    setForgotLoading(false);
+  }
+};
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-950 px-4 py-8">
@@ -111,7 +162,20 @@ const Login = () => {
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
-
+        <p className="text-center text-gray-400 mt-3">
+          <button
+            type="button"
+            onClick={() => {
+              setForgotEmail("");
+              setForgotMessage("");
+              setForgotError("");
+              setShowForgotPopup(true);
+            }}
+            className="text-blue-400 text-7 underline hover:text-blue-500 transition-colors"
+          >
+            Forgot Password?
+          </button>
+        </p>
         {/* Divider */}
 
         <div className="flex items-center gap-3 my-6">
@@ -171,7 +235,103 @@ const Login = () => {
           >
             Register
           </button>
-        </p>
+        </p>  
+        {showForgotPopup && (
+          <div
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 px-4 backdrop-blur-lg"
+            onClick={() => {
+              if (!forgotLoading) setShowForgotPopup(false);
+            }}
+          >
+            <div
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="forgot-password-title"
+              className="w-full max-w-md rounded-2xl border border-gray-700 bg-gray-900 p-6 shadow-2xl sm:p-8"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="mb-6 flex items-start justify-between gap-4">
+                <div>
+                  <h2
+                    id="forgot-password-title"
+                    className="text-5 font-bold text-white"
+                  >
+                    Forgot Password?
+                  </h2>
+
+                  <p className="mt-2 text-8 text-gray-400">
+                    Enter your registered email address to receive a password reset link.
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  aria-label="Close popup"
+                  disabled={forgotLoading}
+                  onClick={() => setShowForgotPopup(false)}
+                  className="text-2xl leading-none text-gray-400 hover:text-white disabled:opacity-50"
+                >
+                  &times;
+                </button>
+              </div>
+
+              <form onSubmit={handleForgotPassword}>
+                <label
+                  htmlFor="forgot-email"
+                  className="mb-2 block text-6 font-medium text-gray-300"
+                >
+                  Email address
+                </label>
+
+                <input
+                  id="forgot-email"
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  placeholder="you@gmail.com"
+                  value={forgotEmail}
+                  onChange={(e) => {
+                    setForgotEmail(e.target.value);
+                    setForgotError("");
+                    setForgotMessage("");
+                  }}
+                  required
+                  disabled={forgotLoading}
+                  className="w-full text-7 rounded-lg px-2 py-0 text-white outline-none placeholder:text-gray-500 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 disabled:opacity-60"
+                />
+
+                {forgotError && (
+                  <p role="alert" className="mt-3 text-8 text-red-400">
+                    {forgotError}
+                  </p>
+                )}
+
+                {forgotMessage && (
+                  <p role="status" className="mt-3 text-8 text-green-400">
+                    {forgotMessage}
+                  </p>
+                )}
+
+                <button
+                  type="submit"
+                  disabled={forgotLoading}
+                  className="mt-5 flex text-7 underline w-full items-center justify-center rounded-lg bg-blue-600 px-2 py-1 font-semibold transition-colors hover:bg-neutGray-800 disabled:cursor-not-allowed disabled:opacity-60"
+                >
+                  {forgotLoading ? "Sending..." : "Send Reset Link"}
+                </button>
+
+                <button
+                  type="button"
+                  disabled={forgotLoading}
+                  onClick={() => setShowForgotPopup(false)}
+                  className="mt-3 w-full text-7 rounded-lg border border-gray-700 px-2 py-1 text-gray-300 transition-colors hover:bg-neutGray-800 disabled:opacity-50"
+                >
+                  Back to Login
+                </button>
+              </form>
+            </div>
+          </div>
+        )}      
       </div>
     </div>
   );

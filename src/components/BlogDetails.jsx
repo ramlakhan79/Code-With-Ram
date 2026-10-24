@@ -20,7 +20,7 @@ import {
     Twitter
 } from "lucide-react";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useRef, useMemo, useState } from "react";
 
 import DOMPurify from "dompurify";
 
@@ -34,6 +34,8 @@ import {
 } from "../utils/api";
 
 import ArticlePDF from "../components/article/ArticlePDF";
+
+import { incrementArticleView } from "../utils/articleView";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -68,6 +70,10 @@ const BlogDetails = () => {
 
     const [copied, setCopied] = useState(false);
     const [shareOpen, setShareOpen] = useState(false);
+
+    const [views, setViews] = useState(0);
+    const [viewsLoaded, setViewsLoaded] = useState(false);
+    const countedArticleRef = useRef(null);
 
 
     /*
@@ -183,6 +189,34 @@ const BlogDetails = () => {
 
         fetchComments();
 
+    }, [blog?._id]);
+
+    /*
+   |--------------------------------------------------------------------------
+   | View Article Count
+   |--------------------------------------------------------------------------
+   */
+
+    useEffect(() => {
+        const articleId = blog?._id;
+
+        if (!articleId || countedArticleRef.current === articleId) {
+            return;
+        }
+
+        countedArticleRef.current = articleId;
+        setViewsLoaded(false);
+
+        incrementArticleView(articleId)
+            .then((count) => {
+                setViews(count);
+            })
+            .catch((error) => {
+                console.error("Unable to count article view:", error);
+            })
+            .finally(() => {
+                setViewsLoaded(true);
+            });
     }, [blog?._id]);
 
 
@@ -915,9 +949,11 @@ const BlogDetails = () => {
 
                             <Eye size={14} />
 
-                            {blog.views ??
+                             {blog.views ??
                                 blog.viewCount ??
-                                0} views
+                                0} views 
+
+                            {/* {viewsLoaded ? views.toLocaleString() : "…"} views */}
 
                         </span>
 

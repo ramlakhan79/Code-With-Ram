@@ -127,7 +127,7 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <div>
-            <label className="block text-sm text-gray-300 mb-2">
+            <label className="block text-6 text-gray-300 mb-2">
               Username or Email
             </label>
 
@@ -136,20 +136,20 @@ const Login = () => {
               value={identifier}
               onChange={(e) => setIdentifier(e.target.value)}
               required
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-blue-500"
+              className="w-full bg-gray-800 text-6 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-blue-500"
               placeholder="Enter username or email"
             />
           </div>
 
           <div>
-            <label className="block text-sm text-gray-300 mb-2">Password</label>
+            <label className="block text-6 text-gray-300 mb-2">Password</label>
 
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
-              className="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-blue-500"
+              className="w-full bg-gray-800 text-6 border border-gray-700 rounded-lg px-4 py-3 text-white outline-none focus:border-blue-500"
               placeholder="Enter password"
             />
           </div>
@@ -157,7 +157,7 @@ const Login = () => {
           <button
             type="submit"
             disabled={loading}
-            className="glassy-icon px-3 border rounded-lg w-full py-3 text-white font-semibold disabled:opacity-50"
+            className="glassy-icon px-1 border rounded-lg w-full py-1 text-white font-semibold disabled:opacity-50"
           >
             {loading ? "Logging in..." : "Login"}
           </button>
@@ -178,13 +178,13 @@ const Login = () => {
         </p>
         {/* Divider */}
 
-        <div className="flex items-center gap-3 my-6">
+        {/* <div className="flex items-center gap-3 my-6">
           <div className="h-px bg-gray-800 flex-1" />
 
           <span className="text-gray-500 text-sm">OR</span>
 
           <div className="h-px bg-gray-800 flex-1" />
-        </div>
+        </div> */}
         <div className="flex flex-wrap items-center justify-center gap-3">
           {/* Google */}
           <div className="items-center">
@@ -208,9 +208,9 @@ const Login = () => {
           <div className="text-7 flex gap-3 text-gray-500 mt-0">
             Password Login: <span className="font-medium text-7 text-gray-400">1-Day Session</span>           
           </div>
-          <div className="text-8 flex text-gray-500 mt-0">
+          {/* <div className="text-8 flex text-gray-500 mt-0">
            OR
-          </div>
+          </div> */}
           <div className="text-7 flex gap-3 text-gray-500 mt-0">
             Google Login: <span className="font-medium text-7 text-gray-400">15-Day Session</span>
           </div>     
@@ -226,12 +226,12 @@ const Login = () => {
           <p className="text-suppRed-500 text-sm">{error.token}</p>
         )}
         </p> */}
-        <p className="text-center text-gray-400 text-sm mt-6">
+        <p className="text-center text-gray-400 text-6 mt-6">
           Don't have an account?{" "}
           <button
             type="button"
             onClick={() => navigate("/register")}
-            className="text-blue-400 hover:text-blue-300"
+            className="text-blue-400 underline hover:text-neutGray-800"
           >
             Register
           </button>

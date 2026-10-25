@@ -187,47 +187,106 @@ const BlogLanding = ({ articles = [], isLoading = false }) => {
                         Loading articles...
                     </p>
                 ) : featured ? (
-                    <Link
-                        to={getArticleUrl(featured)}
-                        className="group grid overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 transition hover:border-indigo-400 dark:border-white/10 dark:bg-white/[0.03] md:grid-cols-2"
-                    >
-                        {featured.image ? (
-                            <img
-                                src={featured.image}
-                                alt={featured.title}
-                                className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.02] md:h-full"
-                            />
-                        ) : (
-                            <div className="flex min-h-32 items-center justify-center bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-sky-500/20 p-8">
-                                <span className="text-2xl font-black text-indigo-500/70">
-                                    {"< />"}
+                    // <Link
+                    //     to={getArticleUrl(featured)}
+                    //     className="group grid overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 transition hover:border-indigo-400 dark:border-white/10 dark:bg-white/[0.03] md:grid-cols-2"
+                    // >
+                    //         <div className="pointer-events-none absolute right-[-65px] top-[27px] z-10 w-[220px] rotate-45 bg-gradient-to-b from-amber-400 to-amber-800 py-2 text-center text-xs font-bold uppercase tracking-widest text-white shadow-lg">
+                    //             Popular
+                    //         </div>
+
+                    //     {featured.image ? (
+                    //         <img
+                    //             src={featured.image}
+                    //             alt={featured.title}
+                    //             className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.02] md:h-full"
+                    //         />
+                    //     ) : (
+                    //         <div className="flex min-h-32 items-center justify-center bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-sky-500/20 p-8">
+                    //             <span className="text-2xl font-black text-indigo-500/70">
+                    //                 {"< />"}
+                    //             </span>
+                    //         </div>
+                    //     )}
+
+                    //     <div className="flex flex-col justify-center p-6 sm:p-10">
+                    //         <span className="text-5 font-bold uppercase tracking-wider text-indigo-500">
+                    //             {featured.category || "Featured article"}
+                    //         </span>
+
+                    //         <h3 className="mt-4 text-6 font-bold leading-tight sm:text-3xl">
+                    //             {featured.title}
+                    //         </h3>
+
+                    //         <p className="mt-4 text-8 line-clamp-3 leading-7 text-gray-600 dark:text-gray-400">
+                    //             {featured.desc}
+                    //         </p>
+
+                    //         <div className="mt-6 flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400">
+                    //             <span className="flex items-center gap-1.5"><Clock size={14} />{featured.read || "5 min read"}</span>
+                    //             <span className="flex items-center gap-1.5"><Eye size={14} />{formatViews(featured.views)}</span>
+                    //         </div>
+
+                    //         <span className="mt-7 font-semibold text-indigo-600 dark:text-indigo-400">
+                    //             Read article →
+                    //         </span>
+                    //     </div>
+                    // </Link>
+
+                        <Link
+                            to={getArticleUrl(featured)}
+                            className="group relative grid overflow-hidden rounded-2xl border border-gray-200 bg-gray-50 transition hover:border-indigo-400 dark:border-white/10 dark:bg-white/[0.03] md:grid-cols-2"
+                        >
+                            {/* Popular Ribbon */}
+                            <div className="pointer-events-none absolute right-[-65px] top-[27px] z-10 w-[220px] rotate-45 bg-suppYellow-800 from-amber-400 to-amber-800 py-2 text-center text-xs font-bold uppercase tracking-widest text-white shadow-lg">
+                                Popular
+                            </div>
+
+                            {featured.image ? (
+                                <img
+                                    src={featured.image}
+                                    alt={featured.title}
+                                    className="h-64 w-full object-cover transition duration-500 group-hover:scale-[1.02] md:h-full"
+                                />
+                            ) : (
+                                <div className="flex min-h-32 items-center justify-center bg-gradient-to-br from-indigo-500/20 via-violet-500/10 to-sky-500/20 p-8">
+                                    <span className="text-2xl font-black text-indigo-500/70">
+                                        {"< />"}
+                                    </span>
+                                </div>
+                            )}
+
+                            <div className="flex flex-col justify-center p-6 sm:p-10">
+                                <span className="text-5 font-bold uppercase tracking-wider text-indigo-500">
+                                    {featured.category || "Featured article"}
+                                </span>
+
+                                <h3 className="mt-4 text-6 font-bold leading-tight sm:text-3xl">
+                                    {featured.title}
+                                </h3>
+
+                                <p className="mt-4 text-8 line-clamp-3 leading-7 text-gray-600 dark:text-gray-400">
+                                    {featured.desc}
+                                </p>
+
+                                <div className="mt-6 flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400">
+                                    <span className="flex items-center gap-1.5">
+                                        <Clock size={14} />
+                                        {featured.read || "5 min read"}
+                                    </span>
+
+                                    <span className="flex items-center gap-1.5">
+                                        <Eye size={14} />
+                                        {formatViews(featured.views)}
+                                    </span>
+                                </div>
+
+                                <span className="mt-7 font-semibold text-indigo-600 dark:text-indigo-400">
+                                    Read article →
                                 </span>
                             </div>
-                        )}
+                        </Link>
 
-                        <div className="flex flex-col justify-center p-6 sm:p-10">
-                            <span className="text-5 font-bold uppercase tracking-wider text-indigo-500">
-                                {featured.category || "Featured article"}
-                            </span>
-
-                            <h3 className="mt-4 text-6 font-bold leading-tight sm:text-3xl">
-                                {featured.title}
-                            </h3>
-
-                            <p className="mt-4 text-8 line-clamp-3 leading-7 text-gray-600 dark:text-gray-400">
-                                {featured.desc}
-                            </p>
-
-                            <div className="mt-6 flex flex-wrap gap-4 text-xs text-gray-500 dark:text-gray-400">
-                                <span className="flex items-center gap-1.5"><Clock size={14} />{featured.read || "5 min read"}</span>
-                                <span className="flex items-center gap-1.5"><Eye size={14} />{formatViews(featured.views)}</span>
-                            </div>
-
-                            <span className="mt-7 font-semibold text-indigo-600 dark:text-indigo-400">
-                                Read article →
-                            </span>
-                        </div>
-                    </Link>
                 ) : (
                     <p className="rounded-xl border border-dashed border-gray-300 p-8 text-gray-500 dark:border-white/10">
                         No featured articles yet. Publish an article

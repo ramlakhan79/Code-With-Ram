@@ -18,5 +18,5 @@ export const incrementArticleView = async (id) => {
     throw new Error(data.message || "Failed to count article view");
   }
 
-  return data.views;
+  return data.pendingViews; // Return the updated pending views count
 };

@@ -128,10 +128,20 @@ const BlogDetails = () => {
                 const article =
                     data.article || data;
 
+                // setBlog(article);
+
+                // setLiked(data.article.isLiked);
+                // setLikeCount(data.article.likesCount);
                 setBlog(article);
 
-                setLiked(data.article.isLiked);
-                setLikeCount(data.article.likesCount);
+                setLiked(article.isLiked ?? data.isLiked ?? false);
+
+                setLikeCount(
+                    article.likesCount ??
+                    data.likesCount ??
+                    article.likes?.length ??
+                    0
+                );
 
             } catch (error) {
 

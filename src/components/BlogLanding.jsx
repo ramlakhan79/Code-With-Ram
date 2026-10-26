@@ -80,7 +80,7 @@ const BlogLanding = ({ articles = [], isLoading = false }) => {
     const remainingArticles = filteredArticles.slice(1);
 
     return (
-        <main className="min-h-screen text-gray-900 dark:bg-[#1d1f25] dark:text-gray-100">
+        <main className="min-h-screen text-gray-900">
             {/* Hero */}
             <section className="relative overflow-hidden border-b border-gray-200 dark:border-white/10">
                 <div className="pointer-events-none absolute -top-36 left-1/2 h-80 w-80 -translate-x-1/2 rounded-full bg-indigo-500/20 blur-3xl" />

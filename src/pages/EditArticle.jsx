@@ -66,6 +66,7 @@ const EditArticle = () => {
             setSaving(false);
         }
     };
+    // console.log(article);
 
     if (loading) {
         return (

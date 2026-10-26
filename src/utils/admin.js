@@ -142,6 +142,29 @@ export const createArticle = async (article) => {
   });
 };
 
+export const uploadArticleCoverImage = async (file) => {
+  const formData = new FormData();
+  formData.append("image", file);
+
+  const token = getToken();
+
+  const response = await fetch(`${API_URL}/api/articles/upload-cover`, {
+    method: "POST",
+    headers: {
+      ...(token ? { Authorization: `Bearer ${token}` } : {}),
+    },
+    body: formData,
+  });
+
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(data.message || "Failed to upload cover image.");
+  }
+
+  return data.image;
+};
+
 export const updateArticle = async (id, article) => {
   return request(`/api/articles/${id}`, {
     method: "PUT",

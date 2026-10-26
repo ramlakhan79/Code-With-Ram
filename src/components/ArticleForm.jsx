@@ -34,6 +34,7 @@ import {
     EyeOff
 } from "lucide-react";
 
+import { uploadArticleCoverImage } from "../utils/admin";
 
 const MenuButton = ({
     onClick,
@@ -312,7 +313,8 @@ const ArticleForm = ({
     loading,
     buttonText = "Save Article"
 }) => {
-
+    const [uploadingImage, setUploadingImage] = useState(false);
+    const [imageError, setImageError] = useState("");
     const [form, setForm] = useState({
         title: "",
         excerpt: "",
@@ -328,6 +330,48 @@ const ArticleForm = ({
 
     const [wordCount, setWordCount] = useState(0);
     const lowlight = createLowlight(common);
+    const handleImageUpload = async (e) => {
+        const file = e.target.files?.[0];
+
+        if (!file) return;
+
+        const allowedTypes = [
+            "image/jpeg",
+            "image/png",
+            "image/webp",
+            "image/gif"
+        ];
+
+        if (!allowedTypes.includes(file.type)) {
+            setImageError("Please select a JPG, PNG, WEBP or GIF image.");
+            e.target.value = "";
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            setImageError("Image size must be 5 MB or less.");
+            e.target.value = "";
+            return;
+        }
+
+        try {
+            setUploadingImage(true);
+            setImageError("");
+
+            const imageUrl = await uploadArticleCoverImage(file);
+
+            setForm(prev => ({
+                ...prev,
+                coverImage: imageUrl
+            }));
+        } catch (error) {
+            setImageError(error.message || "Image upload failed.");
+        } finally {
+            setUploadingImage(false);
+            e.target.value = "";
+        }
+    };
+
     const editor = useEditor({
 
         extensions: [
@@ -466,19 +510,22 @@ const ArticleForm = ({
 
 
     const handleSubmit = e => {
-
         e.preventDefault();
+
+        if (uploadingImage) {
+            setImageError("Please wait for the image upload to finish.");
+            return;
+        }
 
         onSubmit({
             ...form,
-
+            image: form.coverImage,
             tags: form.tags
                 .split(",")
                 .map(tag => tag.trim())
                 .filter(Boolean)
         });
     };
-
 
     const readingTime = Math.max(
         1,
@@ -663,15 +710,73 @@ const ArticleForm = ({
                                 Cover Image
                             </label>
 
-                            <input
+                            {/* <input
                                 name="coverImage"
                                 value={form.coverImage}
                                 onChange={handleChange}
                                 className="admin-input"
                                 placeholder="https://..."
-                            />
+                            /> */}
 
-                            {form.coverImage && (
+                            <div>
+                                <label className="block text-sm text-gray-300 mb-2">
+                                    Cover Image
+                                </label>
+
+                                <div className="flex flex-wrap items-center gap-4">
+                                    <label className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-white/10 bg-white/5 text-gray-200 hover:bg-white/10 cursor-pointer transition">
+                                        <span>
+                                            {uploadingImage ? "Uploading..." : "Choose Image"}
+                                        </span>
+
+                                        <input
+                                            type="file"
+                                            accept="image/jpeg,image/png,image/webp,image/gif"
+                                            onChange={handleImageUpload}
+                                            disabled={uploadingImage}
+                                            className="hidden"
+                                        />
+                                    </label>
+
+                                    {form.coverImage && (
+                                        <button
+                                            type="button"
+                                            onClick={() => {
+                                                setForm(prev => ({
+                                                    ...prev,
+                                                    coverImage: ""
+                                                }));
+                                                setImageError("");
+                                            }}
+                                            className="text-sm text-red-400 hover:text-red-300"
+                                        >
+                                            Remove image
+                                        </button>
+                                    )}
+                                </div>
+
+                                <p className="text-xs text-gray-500 mt-2">
+                                    JPG, PNG, WEBP or GIF. Maximum size: 5 MB.
+                                </p>
+
+                                {imageError && (
+                                    <p className="text-sm text-red-400 mt-2">
+                                        {imageError}
+                                    </p>
+                                )}
+
+                                {form.coverImage && (
+                                    <div className="mt-4 rounded-xl overflow-hidden border border-white/10">
+                                        <img
+                                            src={form.coverImage}
+                                            alt="Cover preview"
+                                            className="w-full h-48 object-cover"
+                                        />
+                                    </div>
+                                )}
+                            </div>
+
+                            {/* {form.coverImage && (
                                 <div className="mt-3 rounded-xl overflow-hidden border border-white/10 h-40">
 
                                     <img
@@ -685,7 +790,7 @@ const ArticleForm = ({
                                     />
 
                                 </div>
-                            )}
+                            )} */}
 
                         </div>
 
@@ -791,13 +896,14 @@ const ArticleForm = ({
 
                         <button
                             type="submit"
-                            disabled={loading}
+                            disabled={loading || uploadingImage}
                             className="glassy-icon px-7 py-3 shrink-0 border rounded-lg disabled:opacity-50"
                         >
-                            {loading
-                                ? "Saving..."
-                                : buttonText
-                            }
+                            {uploadingImage
+                                ? "Uploading Image..."
+                                : loading
+                                    ? "Saving..."
+                                    : buttonText}
                         </button>
 
                     </div>

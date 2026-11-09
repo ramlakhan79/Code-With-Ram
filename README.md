@@ -1,4 +1,4 @@
-# Code With Ram: client (Phases 1 to 8)
+# Code With Ram: client 
 
 React + Vite + Tailwind. Talks to the Phase 1 server over cookie auth.
 

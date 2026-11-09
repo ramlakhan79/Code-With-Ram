@@ -1,65 +1,23 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="keywords"
-      content="Code With Ram, MERN Stack Developer, Web Development, Bhopal, India, Software Engineering, Website Design, Frontend Development, Backend Development"
-    />
-    <meta
-      name="description"
-      content="Explore Code With Ram's Website for innovative web development projects. Let's build your digital presence!"
-    />
-
-    <title>Code With Ram </title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="canonical" href="https://code-with-ram.vercel.app/" />
-
-    <meta property="og:url" content="https://code-with-ram.vercel.app/" />
-    <meta property="og:image" content="https://code-with-ram.vercel.app/og-image.png" />
-    <meta name="twitter:image" content="https://code-with-ram.vercel.app/og-image.png" />
-
-    <meta
-      property="og:title"
-      content="Ramlakhan | MERN Stack Developer & Web Designer"
-    />
-    <meta
-      property="og:description"
-      content="Discover Ramlakhan's innovative web projects. Let's enhance your online presence!"
-    />
-    <meta property="og:image" content="public/logo-icon-512.png" />
-   
-    <meta property="og:url" content="https://code-with-ram.vercel.app/" />
-    <meta property="og:type" content="website" />
-
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="Ramlakhan | MERN Stack Developer & Web Designer"
-    />
-    <meta
-      name="twitter:description"
-      content="Explore innovative web development projects by Ramlakhan. Let's build your digital presence!"
-    />
-    <meta name="twitter:image" content="public/assets/images/public/codewithram_logo_2.png" />
-
-    <link rel="canonical" href="https://code-with-ram.vercel.app/" />
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Person",
-        "name": "Code With Ram",
-        "url": "https://code-with-ram.vercel.app/", 
-        "description": "Article and Educational content",
-        "image": "public/assets/images/codewithram_logo_2.png",
-        "sameAs": [
-          "https://www.linkedin.com/in/ramlakhanlodhi",
-          "https://twitter.com/RamlakhanLodh18"
-        ]
-      }
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Code With Ram: learn, practice and build with other developers</title>
+    <meta name="description" content="Articles, courses, coding practice, contests and a developer community in one free platform." />
+    <meta name="theme-color" content="#0F111E" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <script>
+      // Apply the saved theme before first paint to avoid a flash
+      (function () {
+        try {
+          var t = localStorage.getItem('cwr-theme') || 'system';
+          var dark = t === 'dark' || (t === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          document.documentElement.classList.toggle('dark', dark);
+        } catch (e) {}
+      })();
     </script>
   </head>
   <body>

@@ -1,8 +1,8 @@
 {
-    "rewrites": [
-        {
-            "source": "/(.*)",
-            "destination": "/index.html"
-        }
-    ]
+  "rewrites": [
+    { "source": "/api/:path*", "destination": "https://code-with-ram-server.vercel.app/api/:path*" },
+    { "source": "/sitemap.xml", "destination": "https://code-with-ram-server.vercel.app/api/seo/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "https://code-with-ram-server.vercel.app/api/seo/robots.txt" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
